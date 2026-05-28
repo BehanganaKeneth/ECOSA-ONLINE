@@ -1,6 +1,6 @@
 # ECOSA Frontend (React + TypeScript)
 
-This is a front-end scaffold for ECOSA — Equatorial College Old Students Association. It implements registration, login (mock), member dashboard/profile editing, mock payments UI, members directory, and a job board using localStorage for data persistence.
+ECOSA Online — Equatorial College Old Students Association web app. Use this site to register, manage your alumni profile, pay membership, browse community posts, view jobs and access shared resources. The frontend stores data locally in your browser for quick demos.
 
 Quick start:
 
@@ -10,8 +10,8 @@ npm install
 npm run dev
 ```
 
-Notes:
-- This is a front-end demo only. Replace the mock services in `src/services/mockService.ts` with real API calls and integrate a payment gateway for production.
+Notes for developers:
+- The frontend currently uses local browser storage for demo data. To enable production features, point the frontend at an API and configure a payment gateway.
 - The app uses Vite + React + TypeScript.
 
 Backend (optional, recommended):
@@ -24,7 +24,7 @@ npm install
 npm start
 ```
 
-When the backend is running it listens on `http://localhost:4000` and the frontend will use it automatically (with localStorage fallback).
+When a backend server is available at `http://localhost:4000` the frontend will use it; otherwise the app will continue to operate using local browser storage.
 
 Server features added:
 - Session-based login endpoints: `POST /api/auth/login` and `POST /api/auth/logout` (uses server-side session cookie).
