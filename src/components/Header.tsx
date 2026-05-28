@@ -6,18 +6,19 @@ export default function Header(){
   const logout = ()=>{ localStorage.removeItem('ecosa_session'); navigate('/') }
   const handleLogout = async ()=>{ try{ await (await import('../services/mockService')).authLogout(); }catch{}; localStorage.removeItem('ecosa_session'); navigate('/') }
   const session = localStorage.getItem('ecosa_session')
+  const logoBase = `${import.meta.env.BASE_URL}ecosa-logo`
   return (
     <header className="card" style={{margin:'12px'}}>
       <div className="container nav">
-        <div style={{flex:1,display:'flex',alignItems:'center',gap:12}}>
+        <Link to="/" style={{flex:1,display:'flex',alignItems:'center',gap:12,color:'inherit',textDecoration:'none'}}>
           <img
-            src="/ecosa-logo.png"
+            src={`${logoBase}.png`}
             alt="ECOSA logo"
             style={{width:128,height:128,objectFit:'contain',borderRadius:10}}
             onError={(e:any)=>{
               try{
-                if(!e.target._triedJpg){ e.target._triedJpg = true; e.target.src = '/ecosa-logo.jpg'; }
-                else if(!e.target._triedJpeg){ e.target._triedJpeg = true; e.target.src = '/ecosa-logo.jpeg'; }
+                if(!e.target._triedJpg){ e.target._triedJpg = true; e.target.src = `${logoBase}.jpg`; }
+                else if(!e.target._triedJpeg){ e.target._triedJpeg = true; e.target.src = `${logoBase}.jpeg`; }
                 else { e.target.style.display = 'none' }
               }catch(err){ e.target.style.display = 'none' }
             }}
@@ -25,7 +26,7 @@ export default function Header(){
           <div style={{fontSize:20, lineHeight:1.05}}>
             <strong style={{fontSize:22}}>ECOSA</strong> — Equatorial College Old Students Association
           </div>
-        </div>
+        </Link>
         <nav className="nav">
           <Link to="/">Home</Link>
           <Link to="/members">Members</Link>
